@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0b0b">
+<meta name="description" content="Explore Wavy Kart's premium collection of kids' ride-on cars, bikes and electric vehicles in Jamnagar, Gujarat.">
+<title>Wavy Kart | Premium Kids Ride-On Collection</title>
+
+<style>
+:root {
+  --bg: #0b0b0b;
+  --card: #151515;
+  --gold: #d8ad55;
+  --gold-light: #f5d98d;
+  --text: #f8f5ee;
+  --muted: #aaa49a;
+  --border: rgba(216,173,85,.25);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.demo-banner {
+  padding: 9px 12px;
+  text-align: center;
+  background: #332712;
+  color: var(--gold-light);
+  font-size: 12px;
+  letter-spacing: .5px;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(11,11,11,.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.nav {
+  max-width: 1150px;
+  margin: auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 20px; font-size: 13px; color: #ddd; }
+.nav-links a:hover { color: var(--gold); }
+
+.hero {
+  max-width: 1150px;
+  margin: auto;
+  padding: 70px 20px 55px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 35px;
+}
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+h1 {
+  margin: 18px 0;
+  font-size: clamp(38px, 5.7vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+h1 span { color: var(--gold); }
+.hero p {
+  max-width: 470px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 15px;
+}
+.btn {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: #15100a;
+  padding: 13px 19px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 13px;
+}
+.btn:hover { background: var(--gold-light); }
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  margin-left: 8px;
+}
+.hero-visual {
+  min-height: 320px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at center, #332817 0%, #17130d 42%, #101010 75%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.hero-visual .car {
+  font-size: clamp(95px, 15vw, 165px);
+  filter: drop-shadow(0 12px 18px #000);
+  animation: float 3s ease-in-out infinite;
+}
+.hero-visual .caption {
+  color: var(--gold-light);
+  letter-spacing: 4px;
+  font-size: 11px;
+  margin-top: 12px;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.trust {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 23px 10px;
+  text-align: center;
+}
+.trust strong { color: var(--gold); font-size: 13px; }
+.trust small { display: block; color: var(--muted); margin-top: 6px; }
+
+section.catalog {
+  max-width: 1150px;
+  margin: auto;
+  padding: 65px 20px;
+}
+.section-head { margin-bottom: 28px; }
+.section-head h2 { font-size: 32px; margin: 10px 0; }
+.section-head p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+.search-wrap { margin: 24px 0 18px; }
+#search {
+  width: 100%;
+  background: #141414;
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 15px;
+  outline: none;
+}
+#search:focus { border-color: var(--gold); }
+.categories {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  padding: 2px 0 15px;
+}
+.cat-btn {
+  flex-shrink: 0;
+  background: #171717;
+  color: #ddd;
+  border: 1px solid #333;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-size: 12px;
+}
+.cat-btn.active, .cat-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.product {
+  background: var(--card);
+  border: 1px solid #292929;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform .2s, border-color .2s;
+}
+.product:hover { transform: translateY(-4px); border-color: var(--gold); }
+.product-image {
+  height: 185px;
+  background: linear-gradient(145deg, #282219, #171717 65%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 78px;
+}
+.product-info { padding: 17px; }
+.tag {
+  display: inline-block;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 5px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+.product h3 { margin: 13px 0 8px; font-size: 17px; }
+.product p { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+}
+.price { color: var(--gold-light); font-size: 12px; font-weight: bold; }
+.details-btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 9px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+.details-btn:hover { background: #302515; }
+.empty { color: var(--muted); padding: 25px 0; }
+
+.about {
+  background: #12110f;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-inner {
+  max-width: 1150px;
+  padding: 50px 20px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.about h2 { font-size: 30px; line-height: 1.2; }
+.about p { color: var(--muted); line-height: 1.9; font-size: 14px; }
+.about-card {
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+.about-card div { padding: 12px 0; border-bottom: 1px solid #292929; }
+.about-card div:last-child { border: 0; }
+.about-card strong { color: var(--gold); }
+
+footer {
+  text-align: center;
+  padding: 32px 15px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+footer .logo { margin-bottom: 12px; }
+
+.notice {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+.notice.show { display: flex; }
+.notice-box {
+  width: 100%;
+  max-width: 390px;
+  background: #171717;
+  border: 1px solid var(--gold);
+  border-radius: 7px;
+  padding: 25px;
+}
+.notice-box h3 { color: var(--gold); }
+.notice-box p { color: #ccc; line-height: 1.7; font-size: 14px; }
+.close {
+  float: right;
+  background: transparent;
+  color: white;
+  border: 0;
+  font-size: 24px;
+}
+
+@media (max-width: 760px) {
+  .nav { padding: 14px; }
+  .logo { font-size: 21px; }
+  .nav-links { gap: 11px; font-size: 11px; }
+  .hero {
+    padding-top: 45px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .hero-visual { min-height: 245px; }
+  .trust { padding: 20px 4px; }
+  .trust strong { font-size: 11px; }
+  .trust small { font-size: 10px; }
+  section.catalog { padding: 45px 14px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+  .product-image { height: 135px; font-size: 60px; }
+  .product-info { padding: 11px; }
+  .product h3 { font-size: 14px; }
+  .product p { font-size: 11px; }
+  .product-bottom { align-items: flex-start; flex-direction: column; }
+  .details-btn { width: 100%; }
+  .about-inner { grid-template-columns: 1fr; padding: 38px 16px; }
+}
+@media (max-width: 360px) {
+  .grid { grid-template-columns: 1fr; }
+  .nav-links { gap: 7px; }
+}
+</style>
+</head>
+
+<body>
+<div class="demo-banner">
+  DEMO PREVIEW · SAMPLE PRODUCTS · NOT THE OFFICIAL STORE WEBSITE
+</div>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#"><span>WAVY</span> KART</a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#catalog">Collection</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">A World of Little Adventures</div>
+    <h1>Big Dreams.<br><span>Little Drivers.</span></h1>
+    <p>
+      Explore a premium-style collection of kids' ride-on cars,
+      bikes and fun vehicles. Find the next little adventure for
+      your family.
+    </p>
+    <a class="btn" href="#catalog">EXPLORE COLLECTION ↗</a>
+    <a class="btn btn-outline" href="#about">OUR SHOWROOM</a>
+  </div>
+
+  <div class="hero-visual" aria-label="Decorative ride-on car illustration">
+    <div class="car" aria-hidden="true">🏎️</div>
+    <div class="caption">LITTLE RIDES · BIG SMILES</div>
+  </div>
+</section>
+
+<div class="trust">
+  <div><strong>PREMIUM STYLE</strong><small>Curated collection</small></div>
+  <div><strong>FOR LITTLE DRIVERS</strong><small>Fun ride-on vehicles</small></div>
+  <div><strong>JAMNAGAR</strong><small>Gujarat, India</small></div>
+</div>
+
+<section class="catalog" id="catalog">
+  <div class="section-head">
+    <div class="eyebrow">Discover the collection</div>
+    <h2>Find Their Next Ride</h2>
+    <p>Browse our demo catalogue. Products, prices and availability are placeholders and must be confirmed by the showroom.</p>
+  </div>
+
+  <div class="search-wrap">
+    <input id="search" type="search" placeholder="Search cars, bikes, jeeps..." aria-label="Search products">
+  </div>
+
+  <div class="categories" id="categories"></div>
+  <div class="grid" id="products"></div>
+  <p class="empty" id="empty" hidden>No demo products found. Try another search.</p>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="eyebrow">About the demo</div>
+      <h2>A Premium Showroom Experience for Every Little Driver.</h2>
+      <p>
+        Wavy Kart is presented here as a website design concept for a
+        kids' ride-on vehicle showroom in Jamnagar, Gujarat. The final
+        business details, real inventory, images and prices must be
+        supplied and approved by the showroom owner.
+      </p>
+    </div>
+    <div class="about-card">
+      <div>Showroom <strong>Wavy Kart</strong></div>
+      <div>Location <strong>Jamnagar, Gujarat</strong></div>
+      <div>Catalogue <strong>Demo preview</strong></div>
+      <div>Contact <strong>To be confirmed by owner</strong></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="logo"><span>WAVY</span> KART</div>
+  Demo website concept · Sample inventory only.<br>
+  Not an official business listing. Contact details pending owner approval.
+  <br><br>© <span id="year"></span> Wavy Kart Demo
+</footer>
+
+<div class="notice" id="notice" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+  <div class="notice-box">
+    <button class="close" id="closeNotice" aria-label="Close">×</button>
+    <h3 id="noticeTitle">Demo Product Details</h3>
+    <p id="noticeText"></p>
+    <p>Product availability, specifications and price have not been verified.</p>
+    <button class="btn" id="okNotice">GOT IT</button>
+  </div>
+</div>
+
+<script>
+const categories = [
+  "All",
+  "Electric Cars",
+  "Jeeps",
+  "Bikes",
+  "Scooters",
+  "Other Rides"
+];
+
+const products = [
+  {id:1,name:"Luxury Sports Ride-On",category:"Electric Cars",icon:"🏎️",tag:"Featured",description:"Demo concept for a stylish kids' sports car."},
+  {id:2,name:"Adventure Kids Jeep",category:"Jeeps",icon:"🚙",tag:"Adventure",description:"Demo concept for a kids' off-road style ride."},
+  {id:3,name:"Mini Racing Bike",category:"Bikes",icon:"🏍️",tag:"Popular",description:"Demo concept for a little rider's bike."},
+  {id:4,name:"Classic Mini Car",category:"Electric Cars",icon:"🚗",tag:"Classic",description:"Demo concept for a classic ride-on car."},
+  {id:5,name:"City Kids Scooter",category:"Scooters",icon:"🛴",tag:"Fun Ride",description:"Demo concept for a scooter-style ride."},
+  {id:6,name:"Premium SUV Ride-On",category:"Jeeps",icon:"🚘",tag:"Premium",description:"Demo concept for an SUV-style ride-on."},
+  {id:7,name:"Sporty Mini Bike",category:"Bikes",icon:"🏍️",tag:"Sport",description:"Demo concept for a sporty mini bike."},
+  {id:8,name:"Little Explorer Jeep",category:"Jeeps",icon:"🚙",tag:"Explorer",description:"Demo concept for an adventure-style jeep."},
+  {id:9,name:"Luxury Mini Convertible",category:"Electric Cars",icon:"🚘",tag:"Luxury",description:"Demo concept for a convertible-style car."},
+  {id:10,name:"Fun Ride Scooter",category:"Scooters",icon:"🛵",tag:"New Style",description:"Demo concept for a fun scooter-style vehicle."},
+  {id:11,name:"Kids' Utility Ride",category:"Other Rides",icon:"🚜",tag:"Utility",description:"Demo concept for a small utility-style ride."},
+  {id:12,name:"Adventure Buggy",category:"Other Rides",icon:"🏎️",tag:"Adventure",description:"Demo concept for a buggy-style vehicle."}
+];
+
+let activeCategory = "All";
+let query = "";
+
+const categoryContainer = document.getElementById("categories");
+const productContainer = document.getElementById("products");
+const searchInput = document.getElementById("search");
+const emptyMessage = document.getElementById("empty");
+const notice = document.getElementById("notice");
+
+function renderCategories() {
+  categoryContainer.innerHTML = "";
+  categories.forEach(category => {
+    const button = document.createElement("button");
+    button.className = "cat-btn" + (category === activeCategory ? " active" : "");
+    button.textContent = category;
+    button.addEventListener("click", () => {
+      activeCategory = category;
+      renderCategories();
+      renderProducts();
+    });
+    categoryContainer.appendChild(button);
+  });
+}
+
+function showDetails(product) {
+  document.getElementById("noticeTitle").textContent = product.name;
+  document.getElementById("noticeText").textContent =
+    product.description + " Category: " + product.category +
+    ". This is a sample product, not confirmed showroom stock.";
+  notice.classList.add("show");
+}
+
+function renderProducts() {
+  productContainer.innerHTML = "";
+
+  const filtered = products.filter(product => {
+    const matchesCategory = activeCategory === "All" ||
+      product.category === activeCategory;
+    const searchText = (product.name + " " + product.category + " " +
+      product.description).toLowerCase();
+    return matchesCategory && searchText.includes(query.toLowerCase());
+  });
+
+  filtered.forEach(product => {
+    const card = document.createElement("article");
+    card.className = "product";
+
+    const image = document.createElement("div");
+    image.className = "product-image";
+    image.setAttribute("aria-label", "Illustrative demo image");
+    image.textContent = product.icon;
+
+    const info = document.createElement("div");
+    info.className = "product-info";
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = product.tag;
+
+    const title = document.createElement("h3");
+    title.textContent = product.name;
+
+    const description = document.createElement("p");
+    description.textContent = product.description;
+
+    const bottom = document.createElement("div");
+    bottom.className = "product-bottom";
+
+    const price = document.createElement("span");
+    price.className = "price";
+    price.textContent = "Price on enquiry";
+
+    const button = document.createElement("button");
+    button.className = "details-btn";
+    button.textContent = "VIEW DETAILS ↗";
+    button.addEventListener("click", () => showDetails(product));
+
+    bottom.append(price, button);
+    info.append(tag, title, description, bottom);
+    card.append(image, info);
+    productContainer.appendChild(card);
+  });
+
+  emptyMessage.hidden = filtered.length !== 0;
+}
+
+searchInput.addEventListener("input", event => {
+  query = event.target.value.trim();
+  renderProducts();
+});
+
+function closeNotice() {
+  notice.classList.remove("show");
+}
+
+document.getElementById("closeNotice").addEventListener("click", closeNotice);
+document.getElementById("okNotice").addEventListener("click", closeNotice);
+
+notice.addEventListener("click", event => {
+  if (event.target === notice) closeNotice();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeNotice();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderCategories();
+renderProducts();
+</script>
+</body>
+  </html>
